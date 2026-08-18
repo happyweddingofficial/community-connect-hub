@@ -127,22 +127,22 @@ function ContactPage() {
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
                 <Input id="name" name="name" maxLength={100} placeholder="Your full name" />
-                {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
+                {errors['name'] && <p className="text-xs text-destructive">{errors['name']}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone / WhatsApp</Label>
                 <Input id="phone" name="phone" maxLength={20} placeholder="+91 00000 00000" />
-                {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
+                {errors['phone'] && <p className="text-xs text-destructive">{errors['phone']}</p>}
               </div>
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" name="email" type="email" maxLength={255} placeholder="you@example.com" />
-                {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+                {errors['email'] && <p className="text-xs text-destructive">{errors['email']}</p>}
               </div>
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="message">Message</Label>
                 <Textarea id="message" name="message" rows={5} maxLength={1000} placeholder="How can we help?" />
-                {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
+                {errors['message'] && <p className="text-xs text-destructive">{errors['message']}</p>}
               </div>
             </div>
 
