@@ -1,31 +1,33 @@
 /**
  * ── SITE CONTENT ──────────────────────────────────────────────────────────
- * Everything editable on the website lives in this one file.
- * Change text, links, reviews, FAQs, gallery photos and the WhatsApp number
- * here — no other file needs to be touched.
- *
- * To use your own photos: drop image files into `src/assets/` and import them
- * at the top of this file, then use the imported name below.
+ * Core data and text for Nikah.com — Matrimonial Advertising & Profile Sharing Service.
  */
-import heroImage from "@/assets/hero-community.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
+import couplesImage from "@/assets/couples.webp";
 
 /* ── 1. Basics ─────────────────────────────────────────────────────────── */
-export const site = {
-  name: "Nikah Community",
-  tagline: "A trusted community, built on care.",
+export const site: {
+  name: string;
+  tagline: string;
+  shortDescription: string;
+  disclaimer: string;
+  whatsappNumber: string;
+  whatsappMessage: string;
+  email?: string;
+  phone: string;
+  address: string;
+} = {
+  name: "Nikah.com",
+  tagline: "Matrimonial Advertising & Profile Sharing Service",
   shortDescription:
-    "A welcoming community where members support each other with guidance, opportunities and genuine connection.",
+    "A transparent matrimonial advertising and profile-sharing platform helping families and individuals discover genuine marriage proposals with respect and privacy.",
+  disclaimer:
+    "Nikah.com is a matrimonial advertising and profile-sharing service. We are NOT a matrimonial broker, marriage bureau, or matchmaking agency.",
   /** WhatsApp number in international format, digits only (country code first). */
   whatsappNumber: "919497133695",
   /** Default message pre-filled when someone taps a WhatsApp button. */
-  whatsappMessage: "Hi! I'd like to know more about joining the community.",
-  email: "hello@example.com",
+  whatsappMessage: "Hi! I'd like to know more about matrimonial profile sharing on Nikah.com.",
   phone: "+91 94971 33695",
-  address: "Kerala, India",
+  address: "Malappuram, Kerala, India",
 };
 
 /** Builds a WhatsApp chat link. Optionally pass a custom message. */
@@ -33,195 +35,251 @@ export function whatsappLink(message: string = site.whatsappMessage) {
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/** Builds a Google Maps search link for an address. */
+export function mapsLink(address: string = site.address) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+}
+
 /* ── 2. Navigation ─────────────────────────────────────────────────────── */
 export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
+  { label: "Terms & Policy", to: "/terms" },
+  { label: "Privacy Policy", to: "/privacy" },
   { label: "Contact Us", to: "/contact" },
 ] as const;
 
 /* ── 3. Home hero ──────────────────────────────────────────────────────── */
 export const hero = {
-  eyebrow: "Community first",
-  headline: "Grow together with people who genuinely care",
+  eyebrow: "Matrimonial Advertising & Profile Sharing",
+  headline: "Connecting families with respect, privacy & trust",
   description:
-    "We bring together members who share knowledge, offer support and open doors for one another. Joining takes a minute — belonging lasts.",
-  primaryCta: { label: "Join on WhatsApp", href: whatsappLink() },
-  secondaryCta: { label: "Learn about us", to: "/about" },
-  image: heroImage,
-  imageAlt: "Community members meeting and talking in a bright hall",
+    "We facilitate genuine matrimonial enquiries through transparent profile advertising and sharing across our website, social media, and WhatsApp networks.",
+  primaryCta: { label: "Contact on WhatsApp", href: whatsappLink() },
+  secondaryCta: { label: "How Our Service Works", to: "/about" },
+  image: couplesImage,
+  imageAlt: "Nikah.com Matrimonial Proposals",
   stats: [
-    { value: "2,500+", label: "Members" },
-    { value: "120+", label: "Events hosted" },
-    { value: "9 yrs", label: "Serving together" },
+    { value: "100%", label: "Privacy Focused" },
+    { value: "Direct", label: "Family Connection" },
+    { value: "Verified", label: "Genuine Enquiries" },
   ],
 };
 
-/* ── 4. Community section ──────────────────────────────────────────────── */
-export const community = {
-  title: "What our community is about",
-  intro:
-    "We are a member-run community focused on trust, respect and practical help. Everything happens in a moderated, safe space.",
-  whoFor:
-    "For families, students, professionals and anyone looking for a dependable circle of people nearby.",
-  benefits: [
+/* ── 4. How Service Works ──────────────────────────────────────────────── */
+export const howItWorks = {
+  title: "How Our Service Works",
+  subtitle:
+    "A straightforward, transparent process designed to help you discover and connect with suitable matrimonial proposals.",
+  steps: [
     {
-      title: "Verified members",
-      description: "Every member is reviewed before joining, so conversations stay safe and respectful.",
+      stepNumber: "01",
+      title: "Profile Submission",
+      description:
+        "Matrimonial profiles are received directly from individuals or families, or through profile contributors and trusted business partners.",
     },
     {
-      title: "Real support",
-      description: "Guidance, referrals and answers from people who have been there before you.",
+      stepNumber: "02",
+      title: "Review & Preparation",
+      description:
+        "After receiving relevant matrimonial information, profiles are reviewed, formatted, and prepared for responsible matrimonial advertising.",
     },
     {
-      title: "Regular meetups",
-      description: "Online and in-person gatherings that make it easy to meet people properly.",
+      stepNumber: "03",
+      title: "Promotion & Profile Sharing",
+      description:
+        "Profiles are shared through our website, official WhatsApp services, and social media platforms to reach interested individuals and families.",
     },
     {
-      title: "No cost to join",
-      description: "Membership is free. We are funded by volunteers and well-wishers.",
+      stepNumber: "04",
+      title: "Direct Family Connection",
+      description:
+        "Interested individuals access available profile details and connect directly with the relevant family or contact person. We make no marriage decisions on your behalf.",
     },
   ],
 };
 
-/* ── 5. Related pages / services cards ─────────────────────────────────── */
-export const relatedPages = [
+/* ── 5. Key Service Pillars / Features ─────────────────────────────────── */
+export const servicePillars = [
   {
-    title: "Matrimony Circle",
-    description: "A moderated space for families seeking trusted introductions.",
-    image: gallery3,
-    href: whatsappLink("Hi! I'd like to know more about the Matrimony Circle."),
+    title: "Matrimonial Advertising",
+    description:
+      "We advertise and share matrimonial profiles across verified digital channels to help families discover genuine proposals efficiently.",
   },
   {
-    title: "Career & Mentoring",
-    description: "Mentors, job leads and interview help shared by senior members.",
-    image: gallery4,
-    href: whatsappLink("Hi! I'd like to know more about Career & Mentoring."),
+    title: "Respect & Privacy First",
+    description:
+      "We treat every individual and family with dignity. Reasonable measures are maintained to safeguard personal data and photographs.",
   },
   {
-    title: "Learning Circles",
-    description: "Small study groups that meet weekly to learn something new.",
-    image: gallery2,
-    href: whatsappLink("Hi! I'd like to know more about the Learning Circles."),
+    title: "Direct Communication",
+    description:
+      "Connect directly with families without middleman interference or broker commissions. You retain full control over your decisions.",
+  },
+  {
+    title: "Prompt Profile Removal",
+    description:
+      "Respecting privacy is our priority. If you need any profile updated or removed, our official support handles genuine requests promptly.",
   },
 ];
 
-/* ── 6. Reviews / testimonials ─────────────────────────────────────────── */
-/** Reorder by moving items. `photo` is optional — initials are shown instead. */
+/* ── 6. Matrimonial Advertising Policy Highlights ──────────────────────── */
+export const advertisingPolicyHighlights = {
+  title: "Our Matrimonial Advertising Policy",
+  description:
+    "Please read our clear principles regarding service nature, user verification, and subscriptions.",
+  points: [
+    {
+      title: "Not a Broker or Matchmaking Bureau",
+      description:
+        "Nikah.com is an advertising and profile-sharing platform. We do not act as matrimonial brokers, marriage bureaus, or matchmaking agencies.",
+    },
+    {
+      title: "Independent Verification Required",
+      description:
+        "Users and families are strongly advised to independently verify identity, family background, education, occupation, marital status, and other details before proceeding.",
+    },
+    {
+      title: "No Outcome Guarantees",
+      description:
+        "We do not guarantee the authenticity, suitability, compatibility, response, or successful outcome of any matrimonial proposal.",
+    },
+    {
+      title: "Transparent Service Subscriptions",
+      description:
+        "Subscription fees are service fees for platform access and promotional features during the chosen period — not payments for arranging a marriage.",
+    },
+  ],
+};
+
+/* ── 7. Reviews / Testimonials ─────────────────────────────────────────── */
 export const reviews = [
   {
-    name: "Ayesha Rahman",
-    photo: "",
-    rating: 5,
-    date: "March 2026",
-    text: "The community helped my family more than we expected. Everyone is polite, patient and genuinely helpful.",
-  },
-  {
-    name: "Imran Sadiq",
-    photo: "",
+    name: "Fathima & Family",
+    location: "Kerala",
     rating: 5,
     date: "February 2026",
-    text: "Joined through WhatsApp and got a response the same day. The mentoring group changed my career direction.",
+    text: "The WhatsApp profile sharing service made it very easy for our family to connect with genuine proposals. Transparent and very respectful communication.",
   },
   {
-    name: "Fathima Noor",
-    photo: "",
-    rating: 4,
+    name: "Abdul Rahman",
+    location: "Malappuram",
+    rating: 5,
     date: "January 2026",
-    text: "Well moderated and respectful. I like that there is no spam — only useful conversations.",
+    text: "I appreciate that Nikah.com is straightforward about being an advertising service rather than a broker. Found genuine family contacts directly through WhatsApp.",
   },
   {
-    name: "Rashid K.",
-    photo: "",
+    name: "Suhara B.",
+    location: "Calicut",
     rating: 5,
     date: "December 2025",
-    text: "Collected via WhatsApp: 'Great people, honest guidance. I recommend it to everyone I know.'",
+    text: "Very prompt support when we had questions about profile details. Clean and respectful platform for family-oriented proposals.",
   },
-];
-
-/* ── 7. Gallery ────────────────────────────────────────────────────────── */
-export const gallery = [
-  { image: gallery1, caption: "Volunteering weekend" },
-  { image: gallery2, caption: "Weekly learning circle" },
-  { image: gallery3, caption: "Annual community gathering" },
-  { image: gallery4, caption: "Mentoring session" },
+  {
+    name: "Mohammed Niyas",
+    location: "Kerala",
+    rating: 5,
+    date: "November 2025",
+    text: "Great experience with the WhatsApp service. The profiles were detailed and we could contact the families directly without any third-party pressure.",
+  },
 ];
 
 /* ── 8. FAQs ───────────────────────────────────────────────────────────── */
 export const faqs = [
   {
-    question: "How do I join the community?",
+    question: "What is Nikah.com and how does it work?",
     answer:
-      "Tap any WhatsApp button on this site and send us a message. A volunteer replies within a day and guides you through the short onboarding.",
+      "Nikah.com is a matrimonial advertising and profile-sharing service. We receive matrimonial details directly from families or contributors, format and review them, and share them via our website, social media, and WhatsApp services so interested individuals and families can connect directly.",
   },
   {
-    question: "Is there any membership fee?",
-    answer: "No. Membership is completely free and always will be.",
-  },
-  {
-    question: "Who can become a member?",
+    question: "Is Nikah.com a marriage bureau or matrimonial broker?",
     answer:
-      "Anyone who agrees to our community guidelines and takes part respectfully. Families, students and professionals are all welcome.",
+      "No. Nikah.com is NOT a matrimonial broker, marriage bureau, or matchmaking agency. We do not make marriage decisions on behalf of users or families, nor do we arrange marriages. We are an advertising and profile-sharing platform.",
   },
   {
-    question: "How is my privacy protected?",
+    question: "Who is responsible for verifying profile details?",
     answer:
-      "Your details are never shared outside the community, and all groups are moderated by named volunteers.",
+      "Users and families are responsible for independently verifying the identity, background, education, occupation, marital status, and suitability of any profile before proceeding with a matrimonial relationship.",
   },
   {
-    question: "Do you host offline events?",
-    answer: "Yes — meetups, workshops and family gatherings happen through the year. Dates are shared on WhatsApp.",
+    question: "What do subscription fees cover?",
+    answer:
+      "Subscription fees are service fees charged for access to profile-sharing features and contact access for the specified subscription period. A subscription does not guarantee any marriage, proposal, response, or specific matrimonial outcome.",
+  },
+  {
+    question: "How can I request profile removal or update my privacy settings?",
+    answer:
+      "If you believe your profile, photograph, or information has been published without permission, or if you wish to remove an active profile, contact us through our official WhatsApp (+91 94971 33695) with the profile details or URL. We review and process genuine requests promptly.",
+  },
+  {
+    question: "How do I submit a matrimonial profile?",
+    answer:
+      "You can contact us directly on WhatsApp (+91 94971 33695) to submit profile details, photographs, and preferences. Our team will guide you through the format and review process.",
   },
 ];
 
 /* ── 9. Final CTA ──────────────────────────────────────────────────────── */
 export const finalCta = {
-  headline: "Ready to become part of the community?",
-  text: "Send one message on WhatsApp and a volunteer will help you get started.",
-  buttonLabel: "Join on WhatsApp",
+  headline: "Looking for Genuine Matrimonial Proposals?",
+  text: "Send a message on WhatsApp to share your profile or enquire about available matrimonial proposals.",
+  buttonLabel: "Chat on WhatsApp",
 };
 
 /* ── 10. Social links ──────────────────────────────────────────────────── */
 export const socials = [
-  { label: "Facebook", href: "https://facebook.com" },
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "YouTube", href: "https://youtube.com" },
+  { label: "Facebook", href: "https://www.facebook.com/share/1F29hkZHaa/" },
+  { label: "Instagram", href: "https://www.instagram.com/_nikah.com_" },
+  { label: "YouTube", href: "https://youtube.com/@nikah.com12" },
 ];
 
 /* ── 11. Footer ────────────────────────────────────────────────────────── */
 export const footer = {
   description:
-    "A member-run community built on trust, respect and practical support for every family.",
-  communityLinks: [
-    { label: "Matrimony Circle", href: whatsappLink("Hi! Tell me about the Matrimony Circle.") },
-    { label: "Career & Mentoring", href: whatsappLink("Hi! Tell me about Career & Mentoring.") },
-    { label: "Learning Circles", href: whatsappLink("Hi! Tell me about the Learning Circles.") },
+    "Nikah.com is a matrimonial advertising and profile-sharing service supporting genuine matrimonial connections with respect, transparency, and responsibility.",
+  policyLinks: [
+    { label: "Privacy Policy", to: "/privacy" },
+    { label: "Terms & Conditions", to: "/terms" },
+    { label: "About Us", to: "/about" },
+    { label: "Contact Us", to: "/contact" },
   ],
-  copyright: `© ${new Date().getFullYear()} ${site.name}. All rights reserved.`,
+  copyright: `Copyright © ${new Date().getFullYear()} ${site.name} Powered by Hapco Media`,
 };
 
 /* ── 12. About page ────────────────────────────────────────────────────── */
 export const about = {
-  headline: "About our community",
+  headline: "About Nikah.com",
   intro:
-    "What began as a small WhatsApp group of neighbours is now a community of thousands who look out for one another.",
+    "At Nikah.com, we believe that every individual and family deserves respect, privacy, and transparency in their search for a life partner.",
   story:
-    "We started in 2017 with a simple idea: people do better when they have someone reliable to ask. Volunteers answer questions, connect members and organise gatherings — and everything stays free, moderated and respectful.",
+    "Nikah.com is a matrimonial advertising and profile-sharing platform that helps people discover and connect with potential marriage proposals. We are not a matrimonial broker or marriage bureau. Our purpose is to facilitate genuine matrimonial enquiries with dignity, clarity, and ease.",
   mission:
-    "To give every member a trustworthy place to ask for help, share opportunities and build lasting relationships.",
+    "To support genuine matrimonial connections by providing a trusted, transparent advertising and profile-sharing platform for families and individuals.",
   vision:
-    "A connected community where no one has to figure things out alone, and where support is always one message away.",
-  differences: [
-    { title: "Volunteer led", description: "No agencies, no fees — real members giving their time." },
-    { title: "Carefully moderated", description: "Clear guidelines keep every group calm and useful." },
-    { title: "Local and personal", description: "We know our members by name, not by ticket number." },
+    "A respectful, transparent matrimonial environment where families can discover proposals directly, make informed decisions, and protect their privacy.",
+  values: [
+    {
+      title: "Respect & Transparency",
+      description:
+        "We do not intend to misuse, harm, or misrepresent any individual or family. Clear terms and honest communication guide everything we do.",
+    },
+    {
+      title: "Direct Family Connection",
+      description:
+        "We empower families to connect directly with one another without broker commissions or intermediation.",
+    },
+    {
+      title: "Privacy & Data Protection",
+      description:
+        "We respect the wishes of every profile owner and provide prompt support for profile updates or removal requests.",
+    },
   ],
-  image: heroImage,
+  image: couplesImage,
 };
 
 /* ── 13. Contact page ──────────────────────────────────────────────────── */
 export const contact = {
-  headline: "Contact us",
-  intro: "The fastest way to reach us is WhatsApp. You can also call, email or send the form below.",
+  headline: "Contact Support & Enquiries",
+  intro:
+    "For profile submissions, matrimonial enquiries, subscription assistance, or privacy & profile removal requests, reach out to us directly.",
   formNote: "We usually reply within one working day.",
 };
