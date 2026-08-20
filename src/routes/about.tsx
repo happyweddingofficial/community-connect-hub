@@ -1,9 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ShieldCheck,
+  Heart,
+  Eye,
+  CheckCircle2,
+  Users,
+  Lock,
+  ArrowRight,
+  AlertCircle,
+} from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/Section";
-import { Gallery } from "@/components/site/Gallery";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Button } from "@/components/ui/button";
-import { about, site } from "@/content/site";
+import { about, howItWorks, site } from "@/content/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -24,58 +33,135 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <>
-      <Section className="pt-14 pb-6">
+      {/* Header Section */}
+      <Section className="pt-14 pb-8">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">About us</p>
-          <h1 className="mt-3 text-4xl sm:text-5xl">{about.headline}</h1>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-medium text-primary">
+            <ShieldCheck className="size-3.5" aria-hidden />
+            <span>About Our Platform</span>
+          </div>
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            {about.headline}
+          </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{about.intro}</p>
         </div>
       </Section>
 
-      <Section className="pt-6">
+      {/* Story & Core Mission */}
+      <Section className="pt-2">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <img
             src={about.image}
-            alt="Community members together"
+            alt="Nikah.com matrimonial service"
             loading="lazy"
             width={1280}
             height={960}
-            className="w-full rounded-2xl border border-border object-cover"
+            className="w-full rounded-2xl border border-border object-cover object-top shadow-card"
           />
+
           <div className="space-y-6">
-            <p className="leading-relaxed text-muted-foreground">{about.story}</p>
             <div className="rounded-xl border border-border bg-card p-6 shadow-card">
-              <h2 className="text-xl">Our mission</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{about.mission}</p>
+              <div className="flex items-center gap-2.5 text-primary">
+                <Heart className="size-5" aria-hidden />
+                <h2 className="text-lg font-semibold text-foreground">Who We Are</h2>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{about.story}</p>
             </div>
+
             <div className="rounded-xl border border-border bg-card p-6 shadow-card">
-              <h2 className="text-xl">Our vision</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{about.vision}</p>
+              <div className="flex items-center gap-2.5 text-primary">
+                <ShieldCheck className="size-5" aria-hidden />
+                <h2 className="text-lg font-semibold text-foreground">Our Mission</h2>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{about.mission}</p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+              <div className="flex items-center gap-2.5 text-primary">
+                <Eye className="size-5" aria-hidden />
+                <h2 className="text-lg font-semibold text-foreground">Our Vision</h2>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{about.vision}</p>
             </div>
           </div>
         </div>
       </Section>
 
+      {/* Core Principles */}
       <Section className="bg-secondary/40">
-        <SectionHeading title="What makes us different" />
-        <div className="mt-10 grid gap-5 sm:grid-cols-3">
-          {about.differences.map((item) => (
-            <div key={item.title} className="rounded-xl border border-border bg-card p-6 shadow-card">
-              <h3 className="text-lg">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+        <SectionHeading
+          eyebrow="Our Commitments"
+          title="What Guides Our Service"
+          description="We operate with transparency, respect, and clear policies for all families."
+        />
+        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          {about.values.map((item, index) => {
+            const icons = [CheckCircle2, Users, Lock];
+            const Icon = icons[index % icons.length] || CheckCircle2;
+            return (
+              <div
+                key={item.title}
+                className="rounded-xl border border-border bg-card p-6 shadow-card"
+              >
+                <span className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Icon className="size-5" aria-hidden />
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-foreground">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* How Our Service Works Summary */}
+      <Section>
+        <SectionHeading
+          eyebrow="Workflow"
+          title={howItWorks.title}
+          description={howItWorks.subtitle}
+        />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {howItWorks.steps.map((step) => (
+            <div
+              key={step.stepNumber}
+              className="flex flex-col rounded-xl border border-border bg-card p-6 shadow-card"
+            >
+              <span className="text-2xl font-bold text-primary font-mono">{step.stepNumber}</span>
+              <h3 className="mt-3 text-base font-semibold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section>
-        <SectionHeading title="Community photos" description="Moments from our meetups and gatherings." />
-        <Gallery />
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <WhatsAppButton />
-          <Button asChild variant="outline">
-            <Link to="/contact">Contact us</Link>
-          </Button>
+      {/* Important Disclaimer Card */}
+      <Section className="pt-0">
+        <div className="rounded-2xl border border-primary/20 bg-primary/5 p-8 shadow-card">
+          <div className="flex items-start gap-4">
+            <AlertCircle className="mt-1 size-6 shrink-0 text-primary" aria-hidden />
+            <div>
+              <h2 className="text-xl font-bold text-foreground">Important Service Disclaimer</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {site.disclaimer} We do not make marriage decisions on behalf of users or families.
+                Users are strongly advised to independently verify the identity, background,
+                education, occupation, and suitability of any profile before proceeding.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Button asChild size="sm">
+                  <Link to="/terms">
+                    View Full Terms &amp; Policies
+                    <ArrowRight className="size-4" aria-hidden />
+                  </Link>
+                </Button>
+                <WhatsAppButton label="Contact on WhatsApp" size="sm" variant="outline" />
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
     </>

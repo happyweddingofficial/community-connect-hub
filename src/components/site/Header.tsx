@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, site, whatsappLink } from "@/content/site";
+import logoWebp from "@/assets/logo.webp";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -10,13 +11,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur">
       <div className="section-shell flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span
-            aria-hidden
-            className="flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground"
-          >
-            {site.name.charAt(0)}
-          </span>
+        <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+          <img
+            src={logoWebp}
+            alt={site.name}
+            width={36}
+            height={36}
+            className="size-9 rounded-lg object-contain"
+          />
           <span className="text-base font-semibold tracking-tight">{site.name}</span>
         </Link>
 

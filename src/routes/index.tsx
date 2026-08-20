@@ -1,18 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
+import {
+  ArrowRight,
+  ShieldCheck,
+  Send,
+  Users,
+  CheckCircle2,
+  Lock,
+  MessageCircle,
+  FileCheck,
+  AlertCircle,
+} from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Reviews } from "@/components/site/Reviews";
-import { Gallery } from "@/components/site/Gallery";
 import { FaqList } from "@/components/site/FaqList";
 import { Button } from "@/components/ui/button";
 import {
-  community,
+  advertisingPolicyHighlights,
   faqs,
   finalCta,
   hero,
-  relatedPages,
+  howItWorks,
+  servicePillars,
   site,
+  whatsappLink,
 } from "@/content/site";
 
 export const Route = createFileRoute("/")({
@@ -45,20 +56,26 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-function HomePage() {
+export function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <Section className="pt-14 pb-10">
+      {/* Hero Section */}
+      <Section className="pt-12 pb-10">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              {hero.eyebrow}
-            </p>
-            <h1 className="mt-4 text-4xl leading-[1.1] sm:text-5xl">{hero.headline}</h1>
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-medium text-primary">
+              <ShieldCheck className="size-3.5" aria-hidden />
+              <span>{hero.eyebrow}</span>
+            </div>
+
+            <h1 className="mt-4 text-4xl leading-[1.15] font-bold tracking-tight text-foreground sm:text-5xl">
+              {hero.headline}
+            </h1>
+
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
               {hero.description}
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <WhatsAppButton label={hero.primaryCta.label} size="lg" />
               <Button asChild size="lg" variant="outline">
@@ -68,116 +85,161 @@ function HomePage() {
                 </Link>
               </Button>
             </div>
-            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-border pt-6">
+
+            {/* Disclaimer Badge */}
+            <div className="mt-6 flex items-start gap-2.5 rounded-lg border border-border/80 bg-secondary/50 p-3 text-xs text-muted-foreground">
+              <AlertCircle className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
+              <p>
+                <strong>Notice:</strong> {site.disclaimer}
+              </p>
+            </div>
+
+            <dl className="mt-8 grid max-w-md grid-cols-3 gap-6 border-t border-border pt-6">
               {hero.stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className="sr-only">{stat.label}</dt>
-                  <dd className="text-2xl font-semibold">{stat.value}</dd>
+                  <dd className="text-2xl font-bold tracking-tight text-foreground">
+                    {stat.value}
+                  </dd>
                   <p className="mt-1 text-xs text-muted-foreground">{stat.label}</p>
                 </div>
               ))}
             </dl>
           </div>
+
           <img
             src={hero.image}
             alt={hero.imageAlt}
             width={1280}
             height={960}
-            className="w-full rounded-2xl border border-border object-cover shadow-card"
+            className="w-full rounded-2xl border border-border object-cover object-top shadow-card"
           />
         </div>
       </Section>
 
-      {/* Community */}
+      {/* How Our Service Works */}
       <Section className="bg-secondary/40">
-        <SectionHeading title={community.title} description={community.intro} />
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-          {community.whoFor}
-        </p>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {community.benefits.map((benefit) => (
-            <div key={benefit.title} className="rounded-xl border border-border bg-card p-6 shadow-card">
-              <span className="flex size-9 items-center justify-center rounded-lg bg-accent text-accent-foreground">
-                <Check className="size-4" aria-hidden />
+        <SectionHeading
+          eyebrow="Process"
+          title={howItWorks.title}
+          description={howItWorks.subtitle}
+        />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {howItWorks.steps.map((step) => (
+            <div
+              key={step.stepNumber}
+              className="relative flex flex-col rounded-xl border border-border bg-card p-6 shadow-card transition-all hover:border-primary/40"
+            >
+              <span className="text-3xl font-bold text-primary/40 font-mono">
+                {step.stepNumber}
               </span>
-              <h3 className="mt-4 text-lg">{benefit.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{benefit.description}</p>
+              <h3 className="mt-3 text-lg font-semibold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
         <div className="mt-10 flex justify-center">
-          <WhatsAppButton label="Join the community" />
+          <WhatsAppButton label="Submit Your Profile on WhatsApp" />
         </div>
       </Section>
 
-      {/* Related pages */}
+      {/* Service Pillars / Features */}
       <Section>
         <SectionHeading
-          eyebrow="Explore"
-          title="Related communities & services"
-          description="Different circles within the community, each with its own volunteers."
+          eyebrow="Our Principles"
+          title="Why Families Choose Nikah.com"
+          description="Built on respect, transparency, and personal data protection."
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {relatedPages.map((page) => (
-            <article
-              key={page.title}
-              className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-card"
-            >
-              <img
-                src={page.image}
-                alt={page.title}
-                loading="lazy"
-                width={900}
-                height={700}
-                className="h-44 w-full object-cover"
-              />
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg">{page.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {page.description}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {servicePillars.map((pillar, index) => {
+            const icons = [Send, Lock, Users, FileCheck];
+            const Icon = icons[index % icons.length] || CheckCircle2;
+            return (
+              <div
+                key={pillar.title}
+                className="flex flex-col rounded-xl border border-border bg-card p-6 shadow-card"
+              >
+                <span className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Icon className="size-5" aria-hidden />
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-foreground">{pillar.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {pillar.description}
                 </p>
-                <Button asChild variant="outline" size="sm" className="mt-5 self-start">
-                  <a href={page.href} target="_blank" rel="noreferrer noopener">
-                    View more
-                  </a>
-                </Button>
               </div>
-            </article>
-          ))}
+            );
+          })}
         </div>
       </Section>
 
-      {/* Reviews */}
+      {/* Matrimonial Advertising Policy Highlights */}
       <Section className="bg-secondary/40">
         <SectionHeading
+          eyebrow="Transparency"
+          title={advertisingPolicyHighlights.title}
+          description={advertisingPolicyHighlights.description}
+        />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {advertisingPolicyHighlights.points.map((point) => (
+            <div
+              key={point.title}
+              className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 shadow-card"
+            >
+              <CheckCircle2 className="mt-1 size-5 shrink-0 text-primary" aria-hidden />
+              <div>
+                <h3 className="text-base font-semibold text-foreground">{point.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                  {point.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Button asChild variant="outline" size="sm">
+            <Link to="/terms">Read Full Terms &amp; Policy</Link>
+          </Button>
+        </div>
+      </Section>
+
+      {/* Reviews / Testimonials */}
+      <Section>
+        <SectionHeading
           eyebrow="Testimonials"
-          title="What our members say"
-          description="Reviews shared by members, including messages collected on WhatsApp."
+          title="What Families Say"
+          description="Feedback from individuals and families who connected through our profile sharing services."
         />
         <Reviews />
       </Section>
 
-      {/* Gallery */}
-      <Section>
-        <SectionHeading title="Community photos" description="A look at our meetups, classes and gatherings." />
-        <Gallery />
-      </Section>
-
       {/* FAQ */}
       <Section className="bg-secondary/40">
-        <SectionHeading title="Frequently asked questions" />
+        <SectionHeading
+          eyebrow="Clarifications"
+          title="Frequently Asked Questions"
+          description="Everything you need to know about our matrimonial profile sharing and privacy policies."
+        />
         <FaqList />
       </Section>
 
       {/* Final CTA */}
       <Section>
         <div className="rounded-2xl border border-border bg-card px-6 py-14 text-center shadow-card">
-          <h2 className="mx-auto max-w-2xl text-3xl sm:text-4xl">{finalCta.headline}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">{finalCta.text}</p>
+          <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#25D366]/15 text-[#25D366]">
+            <MessageCircle className="size-6" aria-hidden />
+          </div>
+          <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl text-foreground">
+            {finalCta.headline}
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground leading-relaxed">
+            {finalCta.text}
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <WhatsAppButton label={finalCta.buttonLabel} size="lg" />
             <Button asChild size="lg" variant="outline">
-              <Link to="/contact">Contact us</Link>
+              <Link to="/contact">Contact Support</Link>
             </Button>
           </div>
         </div>
