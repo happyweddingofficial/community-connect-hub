@@ -1,0 +1,38 @@
+# Nikah.com — Matrimonial Advertising & Profile Sharing Service
+
+> Nikah.com is an ethical matrimonial advertising and profile-sharing platform based in Malappuram, Kerala, India. It helps individuals and families discover and connect with genuine marriage proposals with respect, transparency, and privacy.
+
+## Important Entity Definition & Disclaimer
+- **What Nikah.com IS**: A digital matrimonial advertising and profile-sharing platform.
+- **What Nikah.com is NOT**: Nikah.com is **NOT** a matrimonial broker, marriage bureau, or matchmaking agency.
+- **No Marriage Decisions**: Nikah.com does not arrange marriages or make decisions on behalf of users or families.
+- **Independent Verification**: Users are strongly advised to independently verify the background, identity, and suitability of any proposal.
+
+## Main Pages
+- [Home Page](https://nikah.com/): Overview of services, how profile sharing works, testimonials, and FAQs.
+- [About Us](https://nikah.com/about): Mission, vision, core values, and operating principles.
+- [Contact Support](https://nikah.com/contact): Direct WhatsApp support, phone inquiries, and office location in Malappuram, Kerala.
+- [Terms & Disclaimer](https://nikah.com/terms): Complete matrimonial advertising terms, subscription policies, and legal disclaimers.
+- [Privacy & Customer Policy](https://nikah.com/privacy): Data handling practices and profile removal request guidelines.
+
+## How Our Service Works
+1. **Profile Submission**: Families and individuals submit matrimonial details directly or through authorized contributors via WhatsApp.
+2. **Review & Preparation**: Profiles are reviewed and formatted respectfully for advertising.
+3. **Profile Sharing**: Profiles are advertised across the website, social channels, and WhatsApp networks.
+4. **Direct Family Connection**: Interested parties connect directly with the profile's family without broker fees or intermediation.
+
+## Privacy & Profile Removal
+- We respect customer privacy and user wishes.
+- Anyone can request prompt profile removal or data update by contacting our official WhatsApp support with the profile details or URL.
+
+## Contact Information
+- **WhatsApp / Phone**: +91 94971 33695
+- **Email**: support@nikah.com
+- **Headquarters / Location**: Malappuram, Kerala, India (Coordinates: 11.0510° N, 76.0711° E)
+- **Official Socials**:
+  - Facebook: https://www.facebook.com/share/1F29hkZHaa/
+  - Instagram: https://www.instagram.com/_nikah.com_
+  - YouTube: https://youtube.com/@nikah.com12
+
+## Extended Documentation
+- Full context and in-depth policy text is available at [llms-full.txt](https://nikah.com/llms-full.txt).

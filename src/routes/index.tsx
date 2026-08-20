@@ -25,31 +25,40 @@ import {
   site,
   whatsappLink,
 } from "@/content/site";
+import { getCanonicalUrl, getFaqSchema, getWebPageSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: `${site.name} — ${site.tagline}` },
-      { name: "description", content: site.shortDescription.slice(0, 155) },
+      { name: "description", content: site.shortDescription },
+      { name: "keywords", content: site.keywords.join(", ") },
       { property: "og:title", content: `${site.name} — ${site.tagline}` },
-      { property: "og:description", content: site.shortDescription.slice(0, 155) },
+      { property: "og:description", content: site.shortDescription },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: getCanonicalUrl("/") },
+      { property: "og:image", content: `${site.siteUrl}/favicon.png` },
+      { property: "og:image:alt", content: `${site.name} Matrimonial Advertising` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: `${site.name} — ${site.tagline}` },
+      { name: "twitter:description", content: site.shortDescription },
+      { name: "twitter:image", content: `${site.siteUrl}/favicon.png` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: getCanonicalUrl("/") }],
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
-          })),
-        }),
+        children: JSON.stringify(
+          getWebPageSchema({
+            title: `${site.name} — ${site.tagline}`,
+            description: site.shortDescription,
+            path: "/",
+          }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getFaqSchema()),
       },
     ],
   }),

@@ -15,6 +15,7 @@ import { Footer } from "@/components/site/Footer";
 import { FloatingCta } from "@/components/site/FloatingCta";
 import { Toaster } from "@/components/ui/sonner";
 import { site } from "@/content/site";
+import { getOrganizationSchema, getServiceSchema, getWebSiteSchema } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -78,10 +79,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${site.name} — ${site.tagline}` },
-      { name: "description", content: site.shortDescription },
+      { name: "theme-color", content: site.themeColor },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
+      { name: "author", content: site.name },
+      { name: "publisher", content: site.name },
+      { name: "application-name", content: site.name },
+      { name: "format-detection", content: "telephone=no" },
+      // Geographic / Local SEO Meta Tags
+      { name: "geo.region", content: site.geo.region },
+      { name: "geo.placename", content: site.geo.placename },
+      { name: "geo.position", content: `${site.geo.latitude};${site.geo.longitude}` },
+      { name: "ICBM", content: `${site.geo.latitude}, ${site.geo.longitude}` },
+      // Global Open Graph & Twitter
       { property: "og:site_name", content: site.name },
-      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -98,6 +112,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
+      { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getOrganizationSchema()),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getWebSiteSchema()),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getServiceSchema()),
+      },
     ],
   }),
   shellComponent: RootShell,

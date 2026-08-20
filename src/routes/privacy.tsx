@@ -3,14 +3,26 @@ import { Shield, Lock, Trash2, HelpCircle, CheckCircle2, MessageCircle } from "l
 import { Section } from "@/components/site/Section";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { site } from "@/content/site";
+import { getBreadcrumbSchema, getCanonicalUrl, getWebPageSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: `Privacy & Customer Policy — ${site.name}` },
+      { title: `Privacy & Customer Policy — ${site.name} | Profile Removal Guidelines` },
       {
         name: "description",
         content: `Privacy Policy and Profile Removal guidelines for ${site.name} matrimonial advertising services.`,
+      },
+      {
+        name: "keywords",
+        content: [
+          "Nikah.com privacy policy",
+          "Matrimonial profile removal",
+          "Customer data protection matrimony",
+          "Kerala matrimony privacy",
+          "Remove matrimonial ad",
+          ...site.keywords,
+        ].join(", "),
       },
       { property: "og:title", content: `Privacy & Customer Policy — ${site.name}` },
       {
@@ -18,9 +30,36 @@ export const Route = createFileRoute("/privacy")({
         content: `Learn how ${site.name} respects and protects customer privacy and handles profile data.`,
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/privacy" },
+      { property: "og:url", content: getCanonicalUrl("/privacy") },
+      { property: "og:image", content: `${site.siteUrl}/favicon.png` },
+      { property: "og:image:alt", content: `${site.name} Privacy Policy` },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: `Privacy & Customer Policy — ${site.name}` },
+      {
+        name: "twitter:description",
+        content: `Learn how ${site.name} respects and protects customer privacy and handles profile data.`,
+      },
+      { name: "twitter:image", content: `${site.siteUrl}/favicon.png` },
     ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    links: [{ rel: "canonical", href: getCanonicalUrl("/privacy") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          getWebPageSchema({
+            title: `Privacy & Customer Policy — ${site.name}`,
+            description: `Privacy Policy and Profile Removal guidelines for ${site.name} matrimonial advertising services.`,
+            path: "/privacy",
+          }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          getBreadcrumbSchema([{ name: "Privacy Policy", path: "/privacy" }]),
+        ),
+      },
+    ],
   }),
   component: PrivacyPage,
 });

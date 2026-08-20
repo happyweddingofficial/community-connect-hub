@@ -3,14 +3,26 @@ import { FileText, CheckCircle2, AlertTriangle, CreditCard, ShieldCheck } from "
 import { Section } from "@/components/site/Section";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { site } from "@/content/site";
+import { getBreadcrumbSchema, getCanonicalUrl, getWebPageSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: `Terms & Conditions / Disclaimer — ${site.name}` },
+      { title: `Terms & Conditions / Disclaimer — ${site.name} | Matrimonial Advertising Policy` },
       {
         name: "description",
         content: `Service Terms, Matrimonial Advertising Policy, and Disclaimer for ${site.name}.`,
+      },
+      {
+        name: "keywords",
+        content: [
+          "Nikah.com terms",
+          "Matrimonial advertising policy",
+          "Marriage bureau disclaimer",
+          "Kerala matrimony terms of service",
+          "Matrimonial subscription policy",
+          ...site.keywords,
+        ].join(", "),
       },
       { property: "og:title", content: `Terms & Conditions — ${site.name}` },
       {
@@ -18,9 +30,34 @@ export const Route = createFileRoute("/terms")({
         content: `Understand the terms, disclaimer, and matrimonial advertising policies of ${site.name}.`,
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/terms" },
+      { property: "og:url", content: getCanonicalUrl("/terms") },
+      { property: "og:image", content: `${site.siteUrl}/favicon.png` },
+      { property: "og:image:alt", content: `${site.name} Terms & Policy` },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: `Terms & Conditions — ${site.name}` },
+      {
+        name: "twitter:description",
+        content: `Understand the terms, disclaimer, and matrimonial advertising policies of ${site.name}.`,
+      },
+      { name: "twitter:image", content: `${site.siteUrl}/favicon.png` },
     ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    links: [{ rel: "canonical", href: getCanonicalUrl("/terms") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          getWebPageSchema({
+            title: `Terms & Conditions / Disclaimer — ${site.name}`,
+            description: `Service Terms, Matrimonial Advertising Policy, and Disclaimer for ${site.name}.`,
+            path: "/terms",
+          }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getBreadcrumbSchema([{ name: "Terms & Policy", path: "/terms" }])),
+      },
+    ],
   }),
   component: TermsPage,
 });
