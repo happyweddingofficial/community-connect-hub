@@ -11,19 +11,57 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { contact, mapsLink, site, socials, whatsappLink } from "@/content/site";
+import { getBreadcrumbSchema, getCanonicalUrl, getFaqSchema, getWebPageSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: `Contact Support & Enquiries — ${site.name}` },
-      { name: "description", content: contact.intro.slice(0, 155) },
-      { property: "og:title", content: `Contact Us — ${site.name}` },
-      { property: "og:description", content: contact.intro.slice(0, 155) },
+      { title: `Contact Support & Enquiries — ${site.name} | WhatsApp Matrimony Support` },
+      { name: "description", content: contact.intro },
+      {
+        name: "keywords",
+        content: [
+          "Contact Nikah.com",
+          "Nikah.com WhatsApp number",
+          "Matrimonial profile submission Kerala",
+          "Profile removal Nikah.com",
+          "Kerala matrimony customer care",
+          "Malappuram matrimonial contact",
+          ...site.keywords,
+        ].join(", "),
+      },
+      { property: "og:title", content: `Contact Support & Enquiries — ${site.name}` },
+      { property: "og:description", content: contact.intro },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: getCanonicalUrl("/contact") },
+      { property: "og:image", content: `${site.siteUrl}/favicon.png` },
+      { property: "og:image:alt", content: `Contact ${site.name}` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: `Contact Support & Enquiries — ${site.name}` },
+      { name: "twitter:description", content: contact.intro },
+      { name: "twitter:image", content: `${site.siteUrl}/favicon.png` },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: getCanonicalUrl("/contact") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          getWebPageSchema({
+            title: `Contact Support & Enquiries — ${site.name}`,
+            description: contact.intro,
+            path: "/contact",
+          }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getBreadcrumbSchema([{ name: "Contact Us", path: "/contact" }])),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getFaqSchema()),
+      },
+    ],
   }),
   component: ContactPage,
 });

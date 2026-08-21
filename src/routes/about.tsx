@@ -11,21 +11,53 @@ import {
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
-import { Button } from "@/components/ui/button";
 import { about, howItWorks, site } from "@/content/site";
+import { getBreadcrumbSchema, getCanonicalUrl, getWebPageSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: `About Us — ${site.name}` },
-      { name: "description", content: about.intro.slice(0, 155) },
+      { title: `About Us — ${site.name} | Transparent Matrimonial Advertising` },
+      { name: "description", content: about.intro },
+      {
+        name: "keywords",
+        content: [
+          "About Nikah.com",
+          "Matrimonial advertising Kerala",
+          "Direct family marriage proposals",
+          "Ethical matrimonial platform",
+          "Kerala matrimony mission",
+          ...site.keywords,
+        ].join(", "),
+      },
       { property: "og:title", content: `About Us — ${site.name}` },
-      { property: "og:description", content: about.intro.slice(0, 155) },
+      { property: "og:description", content: about.intro },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: getCanonicalUrl("/about") },
+      { property: "og:image", content: `${site.siteUrl}/favicon.png` },
+      { property: "og:image:alt", content: `About ${site.name}` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: `About Us — ${site.name}` },
+      { name: "twitter:description", content: about.intro },
+      { name: "twitter:image", content: `${site.siteUrl}/favicon.png` },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: getCanonicalUrl("/about") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          getWebPageSchema({
+            title: `About Us — ${site.name}`,
+            description: about.intro,
+            path: "/about",
+          }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getBreadcrumbSchema([{ name: "About Us", path: "/about" }])),
+      },
+    ],
   }),
   component: AboutPage,
 });

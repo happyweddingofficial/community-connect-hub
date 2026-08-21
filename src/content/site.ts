@@ -5,21 +5,14 @@
 import couplesImage from "@/assets/couples.webp";
 
 /* ── 1. Basics ─────────────────────────────────────────────────────────── */
-export const site: {
-  name: string;
-  tagline: string;
-  shortDescription: string;
-  disclaimer: string;
-  whatsappNumber: string;
-  whatsappMessage: string;
-  email?: string;
-  phone: string;
-  address: string;
-} = {
+export const site = {
   name: "Nikah.com",
   tagline: "Matrimonial Advertising & Profile Sharing Service",
+  siteUrl: "https://nikah.com",
   shortDescription:
     "A transparent matrimonial advertising and profile-sharing platform helping families and individuals discover genuine marriage proposals with respect and privacy.",
+  fullDescription:
+    "Nikah.com is an ethical matrimonial advertising and profile-sharing platform based in Kerala, India. We help families and individuals discover and share verified marriage proposals directly without middlemen, brokers, or marriage bureaus.",
   disclaimer:
     "Nikah.com is a matrimonial advertising and profile-sharing service. We are NOT a matrimonial broker, marriage bureau, or matchmaking agency.",
   /** WhatsApp number in international format, digits only (country code first). */
@@ -27,7 +20,36 @@ export const site: {
   /** Default message pre-filled when someone taps a WhatsApp button. */
   whatsappMessage: "Hi! I'd like to know more about matrimonial profile sharing on Nikah.com.",
   phone: "+91 94971 33695",
+  email: "support@nikah.com",
   address: "Malappuram, Kerala, India",
+  locality: "Malappuram",
+  region: "Kerala",
+  country: "India",
+  countryCode: "IN",
+  postalCode: "676505",
+  geo: {
+    latitude: "11.0510",
+    longitude: "76.0711",
+    region: "IN-KL",
+    placename: "Malappuram, Kerala, India",
+  },
+  themeColor: "#0f766e",
+  keywords: [
+    "Nikah.com",
+    "matrimonial advertising",
+    "matrimonial profile sharing",
+    "Kerala nikah",
+    "Muslim matrimony Kerala",
+    "Kerala marriage proposals",
+    "direct family matrimony",
+    "WhatsApp matrimony service",
+    "Halal matrimonial advertising",
+    "Malappuram matrimony ads",
+    "Calicut nikah proposals",
+    "South India Muslim matrimony",
+    "genuine marriage proposals",
+    "matrimonial notices",
+  ],
 };
 
 /** Builds a WhatsApp chat link. Optionally pass a custom message. */
