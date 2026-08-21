@@ -34,6 +34,7 @@ export const site = {
     placename: "Malappuram, Kerala, India",
   },
   themeColor: "#0f766e",
+  googleSiteVerification: "l1LHyweUw5MyjnIWqQ9Ry_pA51Pyebqfq-vldgpLEXM",
   keywords: [
     "Nikah.com",
     "matrimonial advertising",

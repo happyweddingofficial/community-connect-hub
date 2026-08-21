@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { Button } from "@/components/ui/button";
 import { about, howItWorks, site } from "@/content/site";
 import { getBreadcrumbSchema, getCanonicalUrl, getWebPageSchema } from "@/lib/seo";
 
