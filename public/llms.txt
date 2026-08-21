@@ -9,11 +9,11 @@
 - **Independent Verification**: Users are strongly advised to independently verify the background, identity, and suitability of any proposal.
 
 ## Main Pages
-- [Home Page](https://nikah.com/): Overview of services, how profile sharing works, testimonials, and FAQs.
-- [About Us](https://nikah.com/about): Mission, vision, core values, and operating principles.
-- [Contact Support](https://nikah.com/contact): Direct WhatsApp support, phone inquiries, and office location in Malappuram, Kerala.
-- [Terms & Disclaimer](https://nikah.com/terms): Complete matrimonial advertising terms, subscription policies, and legal disclaimers.
-- [Privacy & Customer Policy](https://nikah.com/privacy): Data handling practices and profile removal request guidelines.
+- [Home Page](https://nikahcom.in/): Overview of services, how profile sharing works, testimonials, and FAQs.
+- [About Us](https://nikahcom.in/about): Mission, vision, core values, and operating principles.
+- [Contact Support](https://nikahcom.in/contact): Direct WhatsApp support, phone inquiries, and office location in Malappuram, Kerala.
+- [Terms & Disclaimer](https://nikahcom.in/terms): Complete matrimonial advertising terms, subscription policies, and legal disclaimers.
+- [Privacy & Customer Policy](https://nikahcom.in/privacy): Data handling practices and profile removal request guidelines.
 
 ## How Our Service Works
 1. **Profile Submission**: Families and individuals submit matrimonial details directly or through authorized contributors via WhatsApp.
@@ -35,4 +35,4 @@
   - YouTube: https://youtube.com/@nikah.com12
 
 ## Extended Documentation
-- Full context and in-depth policy text is available at [llms-full.txt](https://nikah.com/llms-full.txt).
+- Full context and in-depth policy text is available at [llms-full.txt](https://nikahcom.in/llms-full.txt).

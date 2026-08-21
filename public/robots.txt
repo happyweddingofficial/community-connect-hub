@@ -1,5 +1,5 @@
 # Robots.txt for Nikah.com
-# Generative AI & LLM context: https://nikah.com/llms.txt
+# Generative AI & LLM context: https://nikahcom.in/llms.txt
 
 # Web Search Crawlers
 User-agent: Googlebot
@@ -75,4 +75,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://nikah.com/sitemap.xml
+Sitemap: https://nikahcom.in/sitemap.xml
