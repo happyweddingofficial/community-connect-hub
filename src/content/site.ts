@@ -8,7 +8,7 @@ import couplesImage from "@/assets/couples.webp";
 export const site = {
   name: "Nikah.com",
   tagline: "Matrimonial Advertising & Profile Sharing Service",
-  siteUrl: "https://nikah.com",
+  siteUrl: "https://nikahcom.in",
   shortDescription:
     "A transparent matrimonial advertising and profile-sharing platform helping families and individuals discover genuine marriage proposals with respect and privacy.",
   fullDescription:
