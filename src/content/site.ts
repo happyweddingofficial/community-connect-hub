@@ -16,10 +16,10 @@ export const site = {
   disclaimer:
     "Nikah.com is a matrimonial advertising and profile-sharing service. We are NOT a matrimonial broker, marriage bureau, or matchmaking agency.",
   /** WhatsApp number in international format, digits only (country code first). */
-  whatsappNumber: "919497133695",
+  whatsappNumber: "918590561685",
   /** Default message pre-filled when someone taps a WhatsApp button. */
   whatsappMessage: "Hi! I'd like to know more about matrimonial profile sharing on Nikah.com.",
-  phone: "+91 94971 33695",
+  phone: "+91 85905 61685",
   email: "support@nikah.com",
   address: "Malappuram, Kerala, India",
   locality: "Malappuram",
@@ -232,12 +232,12 @@ export const faqs = [
   {
     question: "How can I request profile removal or update my privacy settings?",
     answer:
-      "If you believe your profile, photograph, or information has been published without permission, or if you wish to remove an active profile, contact us through our official WhatsApp (+91 94971 33695) with the profile details or URL. We review and process genuine requests promptly.",
+      "If you believe your profile, photograph, or information has been published without permission, or if you wish to remove an active profile, contact us through our official WhatsApp (+91 85905 61685) with the profile details or URL. We review and process genuine requests promptly.",
   },
   {
     question: "How do I submit a matrimonial profile?",
     answer:
-      "You can contact us directly on WhatsApp (+91 94971 33695) to submit profile details, photographs, and preferences. Our team will guide you through the format and review process.",
+      "You can contact us directly on WhatsApp (+91 85905 61685) to submit profile details, photographs, and preferences. Our team will guide you through the format and review process.",
   },
 ];
 
